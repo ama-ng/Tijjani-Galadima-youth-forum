@@ -244,10 +244,11 @@
         lgaListDiv.appendChild(div);
     });
 
-    // Fetch CSV Data
+   // Fetch CSV Data
     Papa.parse(csvUrl, {
         download: true,
         header: true,
+        skipEmptyLines: true, // This is the new line
         complete: function(results) {
             globalData = results.data;
         }
