@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tijjani Galadima Youth Forum | Adamawa 2027</title>
+    <title>Tijjani Galadima Youth Forum</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.23/jspdf.plugin.autotable.min.js"></script>
@@ -17,35 +17,17 @@
 
         body { font-family: 'Segoe UI', sans-serif; margin: 0; background: var(--bg-light); display: flex; }
 
-        /* Sidebar - Reduced to 150px */
+        /* Sidebar - Fixed 150px */
         .sidebar {
-            width: 150px;
-            height: 100vh;
-            background: var(--apc-blue);
-            color: white;
-            position: fixed;
-            overflow-y: auto;
-            padding: 10px;
+            width: 150px; height: 100vh; background: var(--apc-blue);
+            color: white; position: fixed; overflow-y: auto; padding: 10px;
         }
 
-        .sidebar h2 {
-            font-size: 0.75rem;
-            border-bottom: 2px solid var(--apc-red);
-            padding-bottom: 5px;
-            margin: 15px 0 10px 0;
-            text-transform: uppercase;
-        }
+        .sidebar h2 { font-size: 0.75rem; border-bottom: 2px solid var(--apc-red); padding-bottom: 5px; margin: 15px 0 10px 0; text-transform: uppercase; }
 
         .lga-link {
-            display: block;
-            padding: 6px 10px;
-            color: white;
-            text-decoration: none;
-            border-radius: 4px;
-            margin-bottom: 3px;
-            cursor: pointer;
-            font-size: 0.75rem;
-            transition: 0.2s;
+            display: block; padding: 6px 10px; color: white; text-decoration: none; border-radius: 4px;
+            margin-bottom: 3px; cursor: pointer; font-size: 0.75rem; transition: 0.2s;
         }
 
         .lga-link:hover, .active-nav { background: rgba(255, 255, 255, 0.2); }
@@ -55,26 +37,16 @@
         .main-content { margin-left: 170px; padding: 20px; width: calc(100% - 190px); }
 
         .header {
-            background: white; padding: 15px; border-radius: 12px;
+            background: white; padding: 20px; border-radius: 12px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.05); margin-bottom: 20px;
-            border-left: 8px solid var(--apc-green);
-            display: flex; justify-content: space-between; align-items: center;
+            border-left: 8px solid var(--apc-green); text-align: center;
         }
 
-        .header-text h1 { margin: 0; color: var(--apc-blue); font-size: 1.3rem; }
-        .header-text p { margin: 3px 0 0 0; color: var(--apc-red); font-weight: bold; font-size: 0.8rem; }
+        .header h1 { margin: 0; color: var(--apc-blue); font-size: 1.8rem; letter-spacing: 1px; }
+        .header p { margin: 5px 0 0 0; color: var(--apc-red); font-weight: bold; font-size: 1.1rem; }
 
-        .slideshow-container {
-            width: 80px; height: 80px; position: relative;
-            overflow: hidden; border-radius: 50%; border: 2px solid var(--apc-blue);
-        }
-
-        .slideshow-container img {
-            width: 100%; height: 100%; object-fit: cover;
-            position: absolute; opacity: 0; transition: opacity 1s;
-        }
-
-        .slideshow-container img.active { opacity: 1; }
+        /* Live Indicator */
+        .live-status { font-size: 0.7rem; color: var(--apc-green); display: block; margin-top: 10px; font-weight: bold; }
 
         .card { background: white; padding: 20px; border-radius: 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); margin-bottom: 20px;}
 
@@ -111,27 +83,21 @@
 
 <div class="main-content">
     <div class="header">
-        <div class="header-text">
-            <h1 id="view-title">Tijjani Galadima Youth Forum</h1>
-            <p id="view-subtitle">For Governor Adamawa State 2027 | APC</p>
-        </div>
-        <div class="slideshow-container" id="slideshow">
-            <img src="candidate1.jpg" class="active">
-            <img src="candidate2.jpg">
-            <img src="candidate3.jpg">
-        </div>
+        <h1>TIJJANI GALADIMA YOUTH FORUM</h1>
+        <p>For Governor Adamawa State</p>
+        <span class="live-status">● Live Data Connection Active</span>
     </div>
 
     <div class="card">
-        <h3 style="color: var(--apc-blue); margin-top: 0; font-size: 1rem;">Filter by Wards</h3>
-        <div id="ward-display">Loading wards...</div>
+        <h3 style="color: var(--apc-blue); margin-top: 0; font-size: 1rem;">Wards Filter</h3>
+        <div id="ward-display">Connecting to Sheet...</div>
     </div>
 
     <div class="card">
         <h3 id="table-label" style="font-size: 1rem;">Members List</h3>
         <div id="download-buttons">
-            <button class="btn-download" id="btn-main-dl" onclick="downloadPDF('full')">Download Full List</button>
-            <button class="btn-download" id="btn-lead-dl" onclick="downloadPDF('leadership')">Download Leadership Only</button>
+            <button class="btn-download" id="btn-main-dl" onclick="downloadPDF('full')">Download List</button>
+            <button class="btn-download" id="btn-lead-dl" onclick="downloadPDF('leadership')">Download Leadership</button>
         </div>
         <table id="members-table">
             <thead>
@@ -148,22 +114,21 @@
     </div>
 
     <div class="footer">
-        &copy; 2026 Tijjani Galadima Youth Forum, All Rights Reserved
+        &copy; 2026 Tijjani Galadima Youth Forum
     </div>
 </div>
 
 <script>
     const lgas = ["Demsa", "Fufore", "Ganye", "Girei", "Gombi", "Guyuk", "Hong", "Jada", "Lamurde", "Madagali", "Maiha", "Mayo-Belwa", "Michika", "Mubi North", "Mubi South", "Numan", "Shelleng", "Song", "Toungo", "Yola North", "Yola South"];
+    
+    // THE CSV URL: Ensure the GID matches your sheet
     const csvUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQaJ9AgbTK9-x57MbnmnS7MW4Aq0WcJCwpE16aiLd87sXDxPfFjlL8PRjxM2L9mNKvCWTXmCSAi5xA0/pub?gid=71309035&single=true&output=csv'; 
     
     let db = [];
-    let state = { view: "HOME", lga: "" };
-
+    let state = { view: "HOME", lga: "", activeWard: null };
     const roleOrder = { "Coordinator": 1, "Secretary": 2, "Organizing Secretary": 3, "Member": 99 };
 
-    function getRoleWeight(role) {
-        return roleOrder[role] || 10; // Other official roles fall between 4 and 98
-    }
+    function getRoleWeight(role) { return roleOrder[role] || 10; }
 
     function sortData(data) {
         return data.sort((a, b) => {
@@ -178,51 +143,53 @@
         return str.toLowerCase().split(' ').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
     }
 
-    // Slideshow
-    let slideIdx = 0;
-    const slides = document.querySelectorAll('#slideshow img');
-    setInterval(() => {
-        slides[slideIdx].classList.remove('active');
-        slideIdx = (slideIdx + 1) % slides.length;
-        slides[slideIdx].classList.add('active');
-    }, 4000);
-
-    // Sidebar
+    // Sidebar Init
     const nav = document.getElementById('lga-list');
     lgas.forEach(l => {
         const d = document.createElement('div');
-        d.className = 'lga-link';
-        d.innerText = l;
+        d.className = 'lga-link'; d.innerText = l;
         d.onclick = () => loadLGA(l);
         nav.appendChild(d);
     });
 
-    Papa.parse(csvUrl, {
-        download: true, header: true, skipEmptyLines: true,
-        complete: (r) => { db = r.data; loadHome(); }
-    });
+    // AUTO-REFRESH LOGIC
+    function fetchData() {
+        Papa.parse(csvUrl + "&cachebuster=" + new Date().getTime(), { // cachebuster ensures fresh data
+            download: true, header: true, skipEmptyLines: true,
+            complete: (r) => {
+                db = r.data;
+                refreshDisplay(); // Refresh the current view with new data
+            }
+        });
+    }
+
+    // Initial Fetch
+    fetchData();
+
+    // Re-fetch every 10 seconds automatically
+    setInterval(fetchData, 10000);
+
+    function refreshDisplay() {
+        if (state.view === "HOME") {
+            updateTable(sortData([...db]));
+            updateWards([...new Set(db.map(r => toTitleCase(r.Ward)))].sort());
+        } else {
+            const data = db.filter(r => r.LGA === state.lga);
+            updateTable(sortData(data));
+            updateWards([...new Set(data.map(r => toTitleCase(r.Ward)))].sort());
+        }
+    }
 
     function loadHome() {
-        state = { view: "HOME", lga: "" };
-        document.getElementById('view-title').innerText = "TIJJANI GALADIMA YOUTH FORUM Main Dashboard (All LGAs)";
+        state = { view: "HOME", lga: "", activeWard: null };
         document.getElementById('table-label').innerText = "All LGA Leadership & Members";
-        document.getElementById('btn-lead-dl').innerText = "Download ALL Leadership";
-        document.getElementById('btn-main-dl').innerText = "Download ALL Members";
-        
-        updateWards([...new Set(db.map(r => toTitleCase(r.Ward)))].sort());
-        updateTable(sortData([...db]));
+        refreshDisplay();
     }
 
     function loadLGA(lga) {
-        state = { view: "LGA", lga: lga };
-        document.getElementById('view-title').innerText = `${lga} LGA Dashboard`;
+        state = { view: "LGA", lga: lga, activeWard: null };
         document.getElementById('table-label').innerText = `${lga} Full List (Leaders First)`;
-        document.getElementById('btn-lead-dl').innerText = `Download ${lga} Leaders`;
-        document.getElementById('btn-main-dl').innerText = `Download ${lga} Members`;
-
-        const data = db.filter(r => r.LGA === lga);
-        updateWards([...new Set(data.map(r => toTitleCase(r.Ward)))].sort());
-        updateTable(sortData(data));
+        refreshDisplay();
     }
 
     function updateWards(list) {
@@ -231,6 +198,7 @@
     }
 
     function filterWard(ward) {
+        state.activeWard = ward;
         const source = state.view === "HOME" ? db : db.filter(r => r.LGA === state.lga);
         const filtered = source.filter(r => toTitleCase(r.Ward) === ward);
         updateTable(sortData(filtered));
@@ -256,36 +224,24 @@
         
         let list = (state.view === "HOME") ? [...db] : db.filter(r => r.LGA === state.lga);
         if (type === 'leadership') list = list.filter(r => r.Role !== "Member");
-        
         list = sortData(list);
 
-        // --- Letterhead ---
-        doc.setFontSize(18);
-        doc.setTextColor(0, 82, 165);
+        // Header
+        doc.setFontSize(18); doc.setTextColor(0, 82, 165);
         doc.text("TIJJANI GALADIMA YOUTH FORUM", 105, 15, { align: "center" });
-        doc.setFontSize(10);
-        doc.setTextColor(237, 28, 36);
-        doc.text("ADAMAWA STATE GOVERNORSHIP CAMPAIGN 2027", 105, 21, { align: "center" });
-        doc.setDrawColor(0, 135, 81);
-        doc.line(15, 25, 195, 25);
+        doc.setFontSize(10); doc.setTextColor(237, 28, 36);
+        doc.text("FOR GOVERNOR ADAMAWA STATE", 105, 21, { align: "center" });
+        doc.setDrawColor(0, 135, 81); doc.line(15, 25, 195, 25);
         
-        doc.setFontSize(11);
-        doc.setTextColor(0);
-        const reportTitle = (state.view === "HOME" ? "STATE-WIDE " : state.lga + " ") + (type === 'leadership' ? "LEADERSHIP LIST" : "MEMBERSHIP REGISTER");
-        doc.text(reportTitle, 15, 33);
-        doc.setFontSize(8);
-        doc.text(`Generated on: ${new Date().toLocaleString()}`, 150, 33);
+        const reportTitle = (state.view === "HOME" ? "STATE-WIDE " : state.lga + " ") + (type === 'leadership' ? "LEADERSHIP" : "MEMBERSHIP REGISTER");
+        doc.setFontSize(11); doc.setTextColor(0); doc.text(reportTitle, 15, 33);
+        doc.setFontSize(8); doc.text(`Live Report: ${new Date().toLocaleString()}`, 150, 33);
 
         const rows = list.map(r => [r["Full Name"], r["Phone Number"], r.Role, r.LGA, toTitleCase(r.Ward)]);
         doc.autoTable({
             head: [["Full Name", "Phone", "Role", "LGA", "Ward"]],
-            body: rows,
-            startY: 38,
-            headStyles: { fillColor: [0, 82, 165] },
-            alternateRowStyles: { fillColor: [245, 245, 245] },
-            styles: { fontSize: 8 }
+            body: rows, startY: 38, headStyles: { fillColor: [0, 82, 165] }, styles: { fontSize: 8 }
         });
-
         doc.save(`${reportTitle.replace(/ /g, "_")}.pdf`);
     }
 </script>
